@@ -2,17 +2,15 @@ pipeline {
     agent any
     
     stages {
-        stage('Test') {
+        stage('Pull') {
             steps {
-                script {
-                    if (isUnix()) {
-                        sh 'echo "Unix system"'
-                        sh 'which sh'
-                        sh 'echo $PATH'
-                    } else {
-                        bat 'echo Windows system'
-                    }
-                }
+                echo 'Code pulled from GitHub'
+            }
+        }
+        
+        stage('Build & Deploy') {
+            steps {
+                sh 'docker compose up -d --build'
             }
         }
     }
