@@ -39,3 +39,7 @@ Thumbs.db
 coverage/
 .npm/
 .eslintcache
+
+# keep this folder
+!server/data/
+!server/data/.gitkeep
