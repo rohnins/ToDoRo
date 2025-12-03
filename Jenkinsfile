@@ -8,20 +8,9 @@ pipeline {
             }
         }
         
-        stage('Build') {
+        stage('Build & Deploy') {
             steps {
-                script {
-                    sh 'docker-compose build'
-                }
-            }
-        }
-        
-        stage('Deploy') {
-            steps {
-                script {
-                    sh 'docker-compose down'
-                    sh 'docker-compose up -d'
-                }
+                sh '/bin/bash -c "docker compose up -d --build"'
             }
         }
     }
