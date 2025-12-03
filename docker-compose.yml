@@ -14,8 +14,6 @@ services:
   client:
     build: ./client
     ports:
-      - "3000:3000"
-    # REMOVE volumes section entirely
+      - "3000:80"
     depends_on:
       - server
-    stdin_open: true
