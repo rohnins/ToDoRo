@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build
-RUN npm install -g serve
+ENV DANGEROUSLY_DISABLE_HOST_CHECK=true
+ENV CHOKIDAR_USEPOLLING=false
 EXPOSE 3000
-CMD ["npx", "serve", "-s", "build", "-p", "3000"]
+CMD ["npm", "start"]
