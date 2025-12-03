@@ -52,7 +52,7 @@ function PomodoroTimer() {
 
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', margin: '20px 0' }}>
-      <h2>{isBreak ? '☕ Break Time' : '💼 Working Time!!!!'}</h2>
+      <h2>{isBreak ? '☕ Break Time' : '💼 Works Time!!!!'}</h2>
       
       <div style={{ fontSize: '48px', fontWeight: 'bold', margin: '20px 0' }}>
         {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
