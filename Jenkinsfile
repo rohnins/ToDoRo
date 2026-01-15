@@ -11,11 +11,23 @@ pipeline {
             steps {
                 script {
                     try {
-                        // Attempt to stop containers that might be locking the workspace
-                        // We use the default compose file if it exists from previous run
+                        // 1. Create a dummy docker-compose.yml so we have a config to "down"
+                        // This matches the service names 'server' and 'client' so Docker knows what to look for
+                        writeFile file: 'docker-compose.yml', text: '''
+services:
+  server:
+    image: alpine
+  client:
+    image: alpine
+'''
+                        // 2. Stop the containers using this config
+                        // This releases the file locks on node_modules
                         sh '/usr/local/bin/docker compose down --remove-orphans || true'
+                        
+                        // 3. Cleanup the dummy file
+                        sh 'rm docker-compose.yml'
                     } catch (Exception e) {
-                        echo "Warning: Failed to stop containers, they might not exist yet: ${e.message}"
+                        echo "Warning: Lock cleanup had issues: ${e.message}"
                     }
                 }
             }
