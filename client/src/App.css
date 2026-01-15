@@ -6,7 +6,7 @@
 }
 
 .app-header {
-  background-color: #fff;
+  background-color: #f1ff;
   border-bottom: 1px solid #e0e0e0;
   padding: 16px 24px;
   display: flex;
@@ -112,7 +112,8 @@
 }
 
 .dashboard-timer .timer-display {
-  font-size: 36px !important; /* Override inline style if possible, or we will update JS later */
+  font-size: 36px !important;
+  /* Override inline style if possible, or we will update JS later */
   margin: 10px 0 !important;
 }
 
