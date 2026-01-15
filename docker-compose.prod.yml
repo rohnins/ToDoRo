@@ -12,7 +12,9 @@ services:
     restart: unless-stopped
 
   client:
-    build: ./client
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
     ports:
       - "3000:3000"
     depends_on:
