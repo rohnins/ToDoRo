@@ -1,82 +1,72 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
-import PomodoroTimer from './PomodoroTimer';
+import { useTimer } from './contexts/TimerContext';
+import PomodoroTimer from './components/PomodoroTimer';
+import KanbanBoard from './components/KanbanBoard';
+import CalendarView from './components/Calendar';
+import './timer-templates.css';
+import './responsive.css';
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState('');
+  const { isActive, template } = useTimer();
 
-  //Fetch todos from load
-  useEffect(() => {
-    fetch('/api/todos')
-      .then(res => res.json())
-      .then(data => setTodos(data))
-      .catch(err => console.error('Error fetching todos:', err));
-  }, []);
-
-  // Add new todo
-  const handleAddTodo = async () => {
-    if (!newTodo.trim()) return;
-
-    const response = await fetch('/api/todos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: newTodo })
-    });
-    const todo = await response.json();
-    setTodos([...todos, todo]);
-    setNewTodo('');
+  // Delete todo handler for Kanban
+  const handleDeleteTodo = async (id) => {
+    try {
+      const response = await fetch(`/api/todos/${id}`, {
+        method: 'DELETE'
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete todo');
+      }
+      return true;
+    } catch (err) {
+      console.error('Error deleting todo:', err);
+      throw err;
+    }
   };
 
-  // Toggle complete
-  const handleToggle = async (id, completed) => {
-    fetch(`/api/todos/${id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ completed: completed ? 0 : 1 })
-    });
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: completed ? 0 : 1 } : todo
-    ));
-  };
+  const appClass = `App timer-template-${template} ${isActive ? 'app-timer-active' : ''}`;
 
-  // Delete todo
-  const handleDelete = async (id) => {
-    await fetch(`/api/todos/${id}`, {
-      method: 'DELETE'
-    });
-    setTodos(todos.filter(todo => todo.id !== id));
-  };
-
-return (
-    <div className="App">
-      <h1>Todo & Pomodoro</h1>
-      <PomodoroTimer />
-      <div>
-        <input 
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="New todo..."
-        />
-        <button onClick={handleAddTodo}>Add</button>
+  return (
+    <Router>
+      <div className={appClass}>
+        <header className="app-header">
+          <h1>Todo & Pomodoro</h1>
+          <nav className="app-navigation">
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+              end
+            >
+              Planner
+            </NavLink>
+            <NavLink
+              to="/calendar"
+              className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+            >
+              Calendar
+            </NavLink>
+          </nav>
+        </header>
+        <main className="app-main">
+          <Routes>
+            <Route path="/" element={
+              <div className="combined-dashboard">
+                <section className="dashboard-timer">
+                  <PomodoroTimer />
+                </section>
+                <section className="dashboard-kanban">
+                  <KanbanBoard onDeleteTodo={handleDeleteTodo} />
+                </section>
+              </div>
+            } />
+            <Route path="/calendar" element={<CalendarView />} />
+          </Routes>
+        </main>
       </div>
-
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id}>
-            <input 
-              type="checkbox"
-              checked={todo.completed === 1}
-              onChange={() => handleToggle(todo.id, todo.completed)}
-            />
-            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-              {todo.title}
-            </span>
-            <button onClick={() => handleDelete(todo.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    </Router>
   );
 }
 

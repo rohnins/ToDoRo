@@ -1,0 +1,68 @@
+/* Global Responsive Styles */
+
+/* Mobile First Approach */
+@media (max-width: 480px) {
+  .app-header h1 {
+    font-size: 18px;
+  }
+
+  .nav-link {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .app-main {
+    padding: 8px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 768px) {
+  .app-header h1 {
+    font-size: 22px;
+  }
+
+  .nav-link {
+    padding: 8px 14px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .app-main {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* Timer responsive */
+@media (max-width: 768px) {
+  .pomodoro-timer {
+    padding: 16px;
+    margin: 16px 0;
+  }
+
+  .timer-display {
+    font-size: 36px !important;
+  }
+
+  .timer-controls {
+    flex-direction: column;
+  }
+
+  .timer-controls button {
+    width: 100%;
+  }
+}
+
+/* Kanban responsive - already in kanban.css */
+
+/* Calendar responsive - already in Calendar.css */
+
+/* Settings modal responsive */
+@media (max-width: 480px) {
+  .timer-settings-modal {
+    min-width: 90%;
+    padding: 16px;
+  }
+}
