@@ -10,7 +10,7 @@ pipeline {
         
         stage('Build & Deploy') {
             steps {
-                sh '/usr/local/bin/docker compose up -d --build'
+                sh '/usr/local/bin/docker compose -f docker-compose.prod.yml up -d --build'
             }
         }
     }
