@@ -1,0 +1,144 @@
+/* Minimal Template - Default clean style */
+.timer-template-minimal {
+  background: transparent;
+}
+
+.timer-template-minimal .pomodoro-timer {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+}
+
+/* Fullscreen Focus Template - Red background when active */
+.timer-template-fullscreen {
+  transition: background-color 0.3s ease;
+}
+
+.timer-template-fullscreen.timer-active {
+  background-color: #dc3545 !important;
+  color: white;
+}
+
+.timer-template-fullscreen.timer-active .pomodoro-timer {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.timer-template-fullscreen.timer-active h2,
+.timer-template-fullscreen.timer-active .timer-display {
+  color: white;
+}
+
+.timer-template-fullscreen.timer-active button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.timer-template-fullscreen.timer-active button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Dark Mode Template */
+.timer-template-dark {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.timer-template-dark .pomodoro-timer {
+  background: #2d2d2d;
+  border: 1px solid #444;
+  color: #e0e0e0;
+}
+
+.timer-template-dark h2 {
+  color: #00ff88;
+}
+
+.timer-template-dark .timer-display {
+  color: #00ff88;
+}
+
+.timer-template-dark button {
+  background-color: #333;
+  color: #00ff88;
+  border: 1px solid #00ff88;
+}
+
+.timer-template-dark button:hover {
+  background-color: #00ff88;
+  color: #1a1a1a;
+}
+
+/* Animated Template */
+.timer-template-animated {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+}
+
+.timer-template-animated .pomodoro-timer {
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.timer-template-animated .timer-display {
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.8), 0 0 30px rgba(102, 126, 234, 0.6);
+  }
+}
+
+.timer-template-animated button {
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+.timer-template-animated button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Active timer state - applies red background to entire app */
+.app-timer-active {
+  background-color: #dc3545 !important;
+  transition: background-color 0.5s ease;
+}
+
+.app-timer-active * {
+  color: white !important;
+}
+
+.app-timer-active .pomodoro-timer {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}

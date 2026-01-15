@@ -1,0 +1,24 @@
+/* Additional Kanban styles for responsive design */
+@media (max-width: 768px) {
+  .kanban-column {
+    min-width: 240px;
+  }
+
+  .kanban-board-content {
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kanban-column {
+    min-width: 200px;
+  }
+
+  .kanban-card {
+    padding: 8px;
+  }
+
+  .kanban-card-header h4 {
+    font-size: 12px;
+  }
+}

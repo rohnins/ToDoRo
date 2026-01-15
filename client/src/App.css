@@ -1,38 +1,127 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.5s ease;
+}
+
+.app-header {
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.app-navigation {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-link {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #666;
+  border-radius: 4px;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.nav-link.active {
+  background-color: #007bff;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.app-main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Timer active state overrides */
+.app-timer-active .app-header {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.app-timer-active .app-header h1,
+.app-timer-active .nav-link {
+  color: white;
+}
+
+.app-timer-active .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.app-timer-active .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 16px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .app-header h1 {
+    font-size: 20px;
   }
+
+  .app-navigation {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .app-main {
+    padding: 12px;
+  }
+}
+
+/* Combined Dashboard Layout */
+.combined-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-timer {
+  flex: 0 0 auto;
+}
+
+/* Make timer more compact in dashboard */
+.dashboard-timer .pomodoro-timer {
+  margin: 0;
+  padding: 16px;
+}
+
+.dashboard-timer .timer-display {
+  font-size: 36px !important; /* Override inline style if possible, or we will update JS later */
+  margin: 10px 0 !important;
+}
+
+.dashboard-kanban {
+  flex: 1 1 auto;
+}
+
+/* Ensure Kanban Board fits within the flexible space */
+.kanban-board {
+  height: auto;
+  min-height: 500px;
 }

@@ -1,0 +1,163 @@
+.calendar-view {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-header {
+  margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.calendar-content {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+}
+
+.calendar-wrapper {
+  flex: 1;
+  max-width: 500px;
+}
+
+.custom-calendar {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background: white;
+}
+
+.calendar-todos-panel {
+  flex: 1;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.calendar-todos-panel h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #333;
+  font-size: 18px;
+}
+
+.calendar-no-todos {
+  padding: 40px;
+  text-align: center;
+  color: #999;
+}
+
+.calendar-todos-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.calendar-todo-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: #f9f9f9;
+}
+
+.calendar-todo-color {
+  width: 4px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.calendar-todo-content {
+  flex: 1;
+}
+
+.calendar-todo-title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.calendar-todo-category {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+.calendar-todo-status {
+  font-size: 12px;
+  color: #999;
+  text-transform: capitalize;
+}
+
+.calendar-day-indicator {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.calendar-todo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.calendar-loading {
+  padding: 40px;
+  text-align: center;
+  color: #666;
+}
+
+/* React Calendar overrides */
+.react-calendar {
+  border: none;
+  font-family: inherit;
+}
+
+.react-calendar__tile {
+  padding: 8px;
+  height: 60px;
+}
+
+.react-calendar__tile--active {
+  background: #007bff;
+  color: white;
+}
+
+.react-calendar__tile--active:enabled:hover {
+  background: #0056b3;
+}
+
+.react-calendar__tile--now {
+  background: #fff3cd;
+}
+
+.react-calendar__tile--now:enabled:hover {
+  background: #ffe69c;
+}
+
+@media (max-width: 768px) {
+  .calendar-content {
+    flex-direction: column;
+  }
+
+  .calendar-wrapper {
+    max-width: 100%;
+  }
+
+  .calendar-todos-panel {
+    max-height: 400px;
+  }
+}

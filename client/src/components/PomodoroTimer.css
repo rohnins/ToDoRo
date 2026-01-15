@@ -1,0 +1,94 @@
+.timer-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.timer-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-read-mode {
+  font-size: 64px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.timer-read-mode:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.timer-edit-form {
+  display: flex;
+  align-items: center;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.timer-input {
+  font-size: 64px;
+  font-weight: bold;
+  width: 90px;
+  text-align: right;
+  border: none;
+  border-bottom: 2px solid #007bff;
+  background: transparent;
+  font-family: inherit;
+  color: inherit;
+  padding: 0;
+}
+
+.timer-input:focus {
+  outline: none;
+}
+
+.timer-quick-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timer-quick-controls button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.timer-quick-controls button:hover {
+  background: #e2e6ea;
+}
+
+.timer-quick-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dashboard-timer .timer-read-mode {
+  font-size: 48px;
+}
+
+.dashboard-timer .timer-input,
+.dashboard-timer .timer-edit-form {
+  font-size: 48px;
+}
+
+.dashboard-timer .timer-input {
+  width: 70px;
+}

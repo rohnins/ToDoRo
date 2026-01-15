@@ -1,0 +1,71 @@
+.kanban-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+  cursor: move;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.kanban-card.dragging {
+  opacity: 0.5;
+  transform: rotate(5deg);
+}
+
+.kanban-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.kanban-card-header h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+  word-break: break-word;
+}
+
+.kanban-card-actions {
+  display: flex;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.kanban-card-edit,
+.kanban-card-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px 4px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.kanban-card-edit:hover,
+.kanban-card-delete:hover {
+  opacity: 1;
+}
+
+.kanban-card-due-date {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.kanban-card-completed {
+  font-size: 12px;
+  color: #28a745;
+  margin-top: 4px;
+  font-weight: 500;
+}
