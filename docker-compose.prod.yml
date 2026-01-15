@@ -24,3 +24,6 @@ services:
       - CHOKIDAR_USEPOLLING=true # Optional: helpful if we were mounting, but harmless here
     stdin_open: true
     restart: unless-stopped
+
+volumes:
+  todo-db-data:
