@@ -5,7 +5,8 @@ services:
       dockerfile: ./server/Dockerfile
     ports:
       - "5000:5000"
-    # No volumes mounted to prevent file locking on host
+    volumes:
+      - todo-db-data:/app/data
     environment:
       - NODE_ENV=production
     command: npm start
